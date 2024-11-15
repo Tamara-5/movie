@@ -1,0 +1,174 @@
+@import "../styles/Variable.scss";
+$text-color: #fff;
+
+.element-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+
+  .loading-text {
+    color: $text-color;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 56px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    transition: all 0.3s ease;
+    animation: loading-text 2s ease infinite;
+
+    @keyframes loading-text {
+      0% {
+        font-size: 48px;
+      }
+      50% {
+        font-size: 32px;
+      }
+      0% {
+        font-size: 48px;
+      }
+    }
+  }
+  .empty-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .text {
+      color: $text-color;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 56px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+    }
+    .button {
+      @include buttonStye;
+      max-width: 200px;
+      margin-top: 40px;
+    }
+  }
+}
+.create-movie-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b2a39;
+  color: $text-color;
+  padding: 120px;
+  overflow-x: auto;
+  @media (max-width: 993px) {
+    padding: 80px;
+  }
+  @media (max-width: 768px) {
+    padding: 40px;
+  }
+  .create-movie-page-header {
+    display: flex;
+    justify-content: space-between;
+    .create-movie-page-titiel {
+      display: flex;
+      h1 {
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 56px;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: $text-color;
+        @media (max-width: 768px) {
+          font-size: 30px;
+          margin-bottom: 40px;
+        }
+      }
+      .addNewMove {
+        cursor: pointer;
+        display: inline-block;
+        color: $text-color;
+        border: 3px solid $text-color;
+        border-radius: 50%;
+        margin: 19px 0 0 10px;
+        width: 25px;
+        height: 25px;
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .logout {
+      display: flex;
+      cursor: pointer;
+      h2 {
+        color: $text-color;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+      }
+      img {
+        margin-left: 16px;
+        width: 24px;
+        height: 24px;
+        object-fit: cover;
+      }
+    }
+  }
+  .movie-list {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fill, minmax(266px, 1fr));
+    position: relative;
+    z-index: 10;
+  }
+  .pagination {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 0;
+    position: relative;
+    z-index: 12;
+    &__button {
+      background: none;
+      border: none;
+      color: #ffffff;
+      padding: 5px 10px;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: background 0.3s, opacity 0.3s;
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.4;
+      }
+
+      &:hover:not(:disabled) {
+        opacity: 1;
+      }
+    }
+
+    &__page {
+      background-color: #1b2b34;
+      color: #ffffff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &.active {
+        background-color: #4caf50;
+      }
+
+      &:hover:not(.active) {
+        background-color: #37474f;
+      }
+    }
+  }
+}
